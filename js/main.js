@@ -27,3 +27,7 @@ var ENERGY_INREASE_RATE = 1;
 setInterval(function () {
     energy.change(energy.getValue() + ENERGY_INREASE_RATE);
 }, 100);
+
+$('#theme').click(function (){
+   $('link[href="css/lightstyle.css"]').attr('href','css/lightstyle.css');
+});
