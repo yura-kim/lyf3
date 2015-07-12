@@ -6,58 +6,89 @@
 
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/skeleton.css">
+		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/lightstyle.css">
 
 		<script src="js/jquery-2.1.4.min.js"></script>
 	</head>
 	<body>
 		<br>
+		<!-- CONTENT -->
 		<div class="container">
 			<div class="row">
+				<!-- EVENTS -->
 				<div class="three columns">
 					<strong>Events</strong>
 					<br>
 					<br>
 					<div id="events"></div>
 				</div>
+				<!-- MAIN -->
 				<div class="six columns">
-					<strong>Main</strong>
-					<br>
-					<br>
-					<strong>Job</strong> - $<span id="work_pay">2</span>/<span id="work_cost">2</span>
-					<br>
-					<button id="work">Work</button>
-					<button id="promotion">Ask for a Promotion</button>
-					<br>
-					<br>
-					<div>
-					<strong>Alternate left and right keys to lift the weight!</strong>
-					<pre id="minigame_animation"></pre>
+					<div class="tabs">
+					    <!-- Tabs -->
+					    <ul class="tab-links">
+					        <li class="active"><a href="#tab1">Home</a></li>
+					        <li><a href="#tab2">Job</a></li>
+					        <li><a href="#tab3">Gym</a></li>
+					        <li><a href="#tab4">Education</a></li>
+					    </ul>
+
+					    <div class="tab-content">
+					        <div id="tab1" class="tab active">
+					            <p>Tab #1 content goes here!</p>
+					            <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis.</p>
+					        </div>
+					 
+					        <div id="tab2" class="tab">
+					            <strong>Job</strong> - $<span id="job_pay">0</span>/<span id="job_cost">0</span>
+								<br>
+								<button id="work">Work</button>
+								<button id="promotion">Look for a job</button>
+					        </div>
+					 
+					        <div id="tab3" class="tab">
+					            <div>
+								<p>Alternate left and right keys to lift the weight!</p>
+								<pre id="minigame_animation"></pre>
+								</div>
+								<br>
+								<progress id="minigame_progress_bar" value="0" max="50"></progress>
+					        </div>
+					 
+					        <div id="tab4" class="tab">
+					            <p>Tab #4 content goes here!</p>
+					            <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis. In hac habitasse platea dictumst. Ut euismod tempus hendrerit. Morbi ut adipiscing nisi. Etiam rutrum sodales gravida! Aliquam tellus orci, iaculis vel.</p>
+					        </div>
+					    </div>
 					</div>
-					<br>
-					<progress id="minigame_progress_bar" value="0" max="50"></progress>
 				</div>
+				<!-- STATS -->
 				<div class="three columns">
 					<strong>Stats</strong>
 					<br>
 					<br>
                     <div class="stats">
-                        <strong>Age:</strong> <span id="age">16</span><br>
-                        <strong>Job:</strong> <span id="job">Dish Washer</span><br>
-                        <strong>Money:</strong> $<span id="money">0</span><br>
+                        <strong>Age:</strong> <span id="age">15</span><br>
                         <strong>Energy:</strong> <span id="energy">0</span><br>
+                        <strong>Intelligence:</strong> <span id="intelligence">0</span><br>
+                        <strong>Appearance:</strong> <span id="appearance">0</span><br>
+                        <br>
+                        <strong>Job:</strong> <span id="job">None</span><br>
+                        <strong>Money:</strong> $<span id="money">0</span><br>
                     </div>
 				</div>
 			</div>
 		</div>
 		<br>
 		<!-- FOOTER -->
-		<div class="container" style="text-align: right">
-			<div class="row">
-				<button id="theme">Dark Theme</button>
-			</div>
+		<div class="footer" style="position: fixed; bottom: 0px; width: 100%">
+			<a href="https://github.com/San-Toki/Lyf3" target="_blank"><button>GitHub</button></a>
+			<button id="theme">Dark Theme</button>
 		</div>
 	</body>
 </html>
 
 <script src="js/main.js"></script>
+<script src="js/job.js"></script>
+<script src="js/gym_minigame.js"></script>
