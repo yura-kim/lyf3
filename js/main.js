@@ -1,9 +1,33 @@
+/* PREVENT HIGHLIGHTING */
+var omitformtags=["input", "textarea", "select"],
+	omitformtags=omitformtags.join("|");
+
+function disableselect(e){
+if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
+return false
+}
+
+function reEnable(){
+return true
+}
+
+if (typeof document.onselectstart!="undefined")
+document.onselectstart=new Function ("return false")
+else{
+document.onmousedown=disableselect
+document.onmouseup=reEnable
+}
+
+
+
+
+
 /* EVENTS LOGGER */
 var events = document.getElementById("events"),
 	EVENT_MAX = 5;
-
+// log events
 function logEvent(string) {
-	var newEvent = document.createElement("p");
+	var newEvent = document.createElement("div");
 	newEvent.innerHTML = string;
 	events.insertBefore(newEvent, events.childNodes[0]);
 	// If we have too many children, delete the last one
@@ -12,6 +36,11 @@ function logEvent(string) {
 	}
 }
 
+
+
+
+
+/* MYCTOR */
 function MyCtor(element, data) {
     this.data = data;
     this.element = element;
@@ -33,7 +62,12 @@ MyCtor.prototype.change = function (value) {
 MyCtor.prototype.getValue = function () {
     return parseInt(this.element.innerHTML, 10);
 };
-// Stats
+
+
+
+
+
+/* STATS */
 var age = new MyCtor(document.getElementById("age"), 0),
 	job = new MyCtor(document.getElementById("job"), 0),
 	money = new MyCtor(document.getElementById("money"), 0),
@@ -43,7 +77,7 @@ var age = new MyCtor(document.getElementById("age"), 0),
 // Age increment
 setInterval(function () {
     age.change(age.getValue() + 1);
-}, 10000);
+}, 30000);
 // Energy Increment
 setInterval(function () {
     energy.change(energy.getValue() + ENERGY_INREASE_RATE);
@@ -61,8 +95,11 @@ $('button#theme').click(function () {
     isDarkMode = !isDarkMode;
 });
 
+
+
+
+
 /* WORK */
-// Variables
 var WORK_COST = 2,
 	WORK_PAY = 2,
 	work_pay = new MyCtor(document.getElementById("work_pay"), 0),
@@ -91,10 +128,4 @@ $('button#promotion').click(function () {
     } else {
         logEvent("You did not get a promotion...");
     }
-
-    var bigHtml = $('div.second').html();
-    var smallHtml = $('div.first').html();
-
-    $('div.second').html(smallHtml);
-    $('div.first').html(bigHtml);
 });
