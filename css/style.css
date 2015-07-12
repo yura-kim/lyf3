@@ -1,0 +1,19 @@
+body {
+}
+
+.stats {
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+.footer button {
+	width: 150px;
+	float: right;
+	margin: 2px;
+}

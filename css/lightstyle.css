@@ -4,9 +4,7 @@ body {
 }
 
 .stats {
-    border: 1px solid #222222;
-    border-radius: 4px;
-    padding: 5px;
+    border-color: #222222;
 }
 
 button,
