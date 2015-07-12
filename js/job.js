@@ -10,6 +10,7 @@ var job_id = -1,
 
 
 // Job Ladder
+// [job_name, energy_cost, reward, experience_required]
 var restaurant_jobs = [["Dish-Washer",3,2,0],["Busser",2,2,5]];
 
 
