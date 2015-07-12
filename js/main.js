@@ -20,13 +20,18 @@ MyCtor.prototype.getValue = function () {
     return parseInt(this.element.innerHTML, 10);
 };
 
-var energy = new MyCtor(document.getElementById("energy"), 0),
-	ENERGY_INREASE_RATE = 1,
-	ENERGY_INCREASE_INTERVAL = 100;
+var energy = new MyCtor(document.getElementById("energy"), 0);
+var age = new MyCtor(document.getElementById("age"), 0);
+ENERGY_INREASE_RATE = 1,
+ENERGY_INCREASE_INTERVAL = 100;
 
 setInterval(function () {
     energy.change(energy.getValue() + ENERGY_INREASE_RATE);
 }, ENERGY_INCREASE_INTERVAL);
+
+setInterval(function () {
+    age.change(age.getValue() + 1);
+}, 10000);
 
 var isDarkMode = false;
 $('button#theme').click(function () {
