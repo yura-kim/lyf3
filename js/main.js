@@ -14,10 +14,10 @@ MyCtor.prototype.handleEvent = function (event) {
 
 MyCtor.prototype.change = function (value) {
     this.data = value;
-    this.element.value = value;
+    this.element.innerHTML = value;
 };
 MyCtor.prototype.getValue = function () {
-    return parseInt(this.element.value, 10);
+    return parseInt(this.element.innerHTML, 10);
 };
 
 var energy = new MyCtor(document.getElementById("energy"), 0),
