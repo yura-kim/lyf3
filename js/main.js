@@ -72,7 +72,6 @@ $('button#work').click(function () {
     } else {
     	logEvent("You don't have enough energy to work.")
     }
-    isDarkMode = !isDarkMode;
 });
 // Promotion button
 $('button#promotion').click(function () {
@@ -86,5 +85,10 @@ $('button#promotion').click(function () {
     } else {
         logEvent("You did not get a promotion...");
     }
-    isDarkMode = !isDarkMode;
+
+    var bigHtml = $('div.second').html();
+    var smallHtml = $(this).html();
+
+    $('div.second').html(smallHtml);
+    $('div.first').html(bigHtml);
 });
