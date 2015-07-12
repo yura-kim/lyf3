@@ -29,7 +29,7 @@ setInterval(function () {
 }, ENERGY_INCREASE_INTERVAL);
 
 var isDarkMode = false;
-$('button#theme').click(function (){
+$('button#theme').click(function () {
     if (isDarkMode) {
         $('link[href="css/darkstyle.css"]').attr('href','css/lightstyle.css');
     } else {
