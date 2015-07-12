@@ -26,9 +26,9 @@ document.onmouseup=reEnable
 var events = document.getElementById("events"),
 	EVENT_MAX = 5;
 // log events
-function logEvent(string) {
+function logEvent(message) {
 	var newEvent = document.createElement("div");
-	newEvent.innerHTML = string;
+	newEvent.innerHTML = message;
 	events.insertBefore(newEvent, events.childNodes[0]);
 	// If we have too many children, delete the last one
 	if (events.childNodes.length > EVENT_MAX) {
@@ -93,39 +93,4 @@ $('button#theme').click(function () {
         this.innerHTML = "Light Theme";
     }
     isDarkMode = !isDarkMode;
-});
-
-
-
-
-
-/* WORK */
-var WORK_COST = 2,
-	WORK_PAY = 2,
-	work_pay = new MyCtor(document.getElementById("work_pay"), 0),
-	work_cost = new MyCtor(document.getElementById("work_cost"), 0);
-// Work button
-$('button#work').click(function () {
-    if (energy.getValue() >= WORK_COST) {
-        energy.change(energy.getValue() - WORK_COST);
-        money.change(money.getValue() + WORK_PAY);
-        var message = ""
-        message = message.concat("You spent ", WORK_COST, " energy and made $", WORK_PAY, ".");
-        logEvent(message);
-    } else {
-    	logEvent("You don't have enough energy to work.")
-    }
-});
-// Promotion button
-$('button#promotion').click(function () {
-    if (job.element.innerHTML == "Dish Washer") {
-        job.change("Waiter");
-        WORK_PAY = 5;
-        work_pay.change(5);
-        WORK_COST = 2;
-        work_cost.change(2);
-        logEvent("You got a promotion!");
-    } else {
-        logEvent("You did not get a promotion...");
-    }
 });
