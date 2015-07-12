@@ -1,9 +1,15 @@
-var events = document.getElementById("events");
+/* EVENTS LOGGER */
+var events = document.getElementById("events"),
+	EVENT_MAX = 5;
 
 function logEvent(string) {
 	var newEvent = document.createElement("p");
 	newEvent.innerHTML = string;
 	events.insertBefore(newEvent, events.childNodes[0]);
+	// If we have too many children, delete the last one
+	if (events.childNodes.length > EVENT_MAX) {
+		events.removeChild(events.lastChild);
+	}
 }
 
 function MyCtor(element, data) {
@@ -87,7 +93,7 @@ $('button#promotion').click(function () {
     }
 
     var bigHtml = $('div.second').html();
-    var smallHtml = $(this).html();
+    var smallHtml = $('div.first').html();
 
     $('div.second').html(smallHtml);
     $('div.first').html(bigHtml);
