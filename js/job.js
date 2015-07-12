@@ -33,7 +33,7 @@ $('button#work').click(function () {
 
 
 // Promotion function
-function job_promotion(id) {    // job_id of new job
+function job_promotion(id) {                                    // job_id of new job
     job_id = id;
     job.change(restaurant_jobs[id][0]);
     job_cost.change(restaurant_jobs[id][1]);

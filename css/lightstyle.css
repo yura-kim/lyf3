@@ -3,6 +3,13 @@ body {
 	color: #222222;
 }
 
+a {
+	color: #222222;
+}
+a:hover {
+	color: #222222;
+}
+
 .stats {
     border-color: #222222;
 }
