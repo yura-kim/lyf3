@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 /* EVENTS LOGGER */
 var events = document.getElementById("events"),
-	EVENT_MAX = 5;
+	EVENT_MAX = 1000;
 // log events
 function logEvent(message) {
 	var newEvent = document.createElement("div");

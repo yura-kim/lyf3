@@ -19,7 +19,7 @@ body {
 
 .tab-links li {
 	width: 80px;
-    margin:0px 5px;
+    margin:0px 2px;
     float:left;
     list-style:none;
 }
@@ -50,6 +50,17 @@ li.active a, li.active a:hover {
 
 .tab.active {
     display:block;
+}
+
+
+
+
+
+/* EVENTS */
+#events {
+	border-radius: 4px;
+	height: 500px;
+	overflow: hidden;
 }
 
 
