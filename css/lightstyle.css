@@ -2,3 +2,8 @@ body {
 	background-color: #FFFFFF;
 	color: #000000;
 }
+
+.stats {
+    border: solid #000000 1px;
+    padding: 5px;
+}

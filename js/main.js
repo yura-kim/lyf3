@@ -1,4 +1,3 @@
-// Test
 function MyCtor(element, data) {
     this.data = data;
     this.element = element;
@@ -18,16 +17,23 @@ MyCtor.prototype.change = function (value) {
     this.element.value = value;
 };
 MyCtor.prototype.getValue = function () {
-	return parseInt(this.element.value);
-}
+    return parseInt(this.element.value, 10);
+};
 
 var energy = new MyCtor(document.getElementById("energy"), 0);
-
 var ENERGY_INREASE_RATE = 1;
+var ENERGY_INCREASE_INTERVAL = 100;
+
 setInterval(function () {
     energy.change(energy.getValue() + ENERGY_INREASE_RATE);
-}, 100);
+}, ENERGY_INCREASE_INTERVAL);
 
-$('#theme').click(function (){
-   $('link[href="css/lightstyle.css"]').attr('href','css/lightstyle.css');
+var isDarkMode = false;
+$('button#theme').click(function (){
+    if (isDarkMode) {
+        $('link[href="css/darkstyle.css"]').attr('href','css/lightstyle.css');
+    } else {
+        $('link[href="css/lightstyle.css"]').attr('href','css/darkstyle.css');
+    }
+    isDarkMode = !isDarkMode;
 });
