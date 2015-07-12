@@ -32,10 +32,10 @@ var isDarkMode = false;
 $('button#theme').click(function () {
     if (isDarkMode) {
         $('link[href="css/darkstyle.css"]').attr('href','css/lightstyle.css');
-        this.innerHTML = "Dark";
+        this.innerHTML = "Dark Theme";
     } else {
         $('link[href="css/lightstyle.css"]').attr('href','css/darkstyle.css');
-        this.innerHTML = "Light";
+        this.innerHTML = "Light Theme";
     }
     isDarkMode = !isDarkMode;
 });

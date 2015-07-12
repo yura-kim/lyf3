@@ -1,9 +1,17 @@
 body {
-	background-color: #FFFFFF;
-	color: #000000;
+	background-color: #EEEEEE;
+	color: #222222;
 }
 
 .stats {
-    border: solid #000000 1px;
+    border: 1px solid #222222;
+    border-radius: 4px;
     padding: 5px;
+}
+
+button,
+button:hover,
+button:focus {
+	color: #222222;
+	border: 1px solid #222222;
 }
