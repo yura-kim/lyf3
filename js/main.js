@@ -135,6 +135,7 @@ var animation_text = document.getElementById("minigame_animation");
 var wasLastKeyRight = true;
 function decrementProgress() {
 	progress.value = progress.value - 1;
+	updateWeightliftingAnimation();
 }
 
 function incrementProgress(keyIsRight) {
@@ -144,6 +145,10 @@ function incrementProgress(keyIsRight) {
 		wasLastKeyRight = !wasLastKeyRight;
 	}
 
+	updateWeightliftingAnimation();
+}
+
+function updateWeightliftingAnimation() {
 	if (progress.value < 5) {
 		animation_text.innerHTML = weightlifting_anim[0];
 	} else if (progress.value < 15) {
