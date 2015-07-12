@@ -13,7 +13,6 @@ var job_id = -1,
 // Job Ladder
 // [title, energy cost, money gain, experience requirement]
 var restaurant_jobs = [["Dish-Washer",3,2,0],["Busser",2,2,5],["Wait Staff",2,3,10],["Bartender",3,6,20],["Kitchen Staff",4,10,50]];
->>>>>>> c85af11e46051616516621a3e877be3cbd1ce792
 
 
 // Work button
