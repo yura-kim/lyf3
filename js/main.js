@@ -1,9 +1,15 @@
-var events = document.getElementById("events");
+/* EVENTS LOGGER */
+var events = document.getElementById("events"),
+	EVENT_MAX = 5;
 
 function logEvent(string) {
 	var newEvent = document.createElement("p");
 	newEvent.innerHTML = string;
 	events.insertBefore(newEvent, events.childNodes[0]);
+	// If we have too many children, delete the last one
+	if (events.childNodes.length > EVENT_MAX) {
+		events.removeChild(events.lastChild);
+	}
 }
 
 function MyCtor(element, data) {
@@ -72,7 +78,6 @@ $('button#work').click(function () {
     } else {
     	logEvent("You don't have enough energy to work.")
     }
-    isDarkMode = !isDarkMode;
 });
 // Promotion button
 $('button#promotion').click(function () {
@@ -86,5 +91,4 @@ $('button#promotion').click(function () {
     } else {
         logEvent("You did not get a promotion...");
     }
-    isDarkMode = !isDarkMode;
 });
