@@ -1,5 +1,5 @@
 var progress = document.getElementById("minigame_progress_bar"),
-    appearance = new MyCtor(document.getElementById("apearance"), 0),
+    appearance = new MyCtor(document.getElementById("appearance"), 0),
     animation_text = document.getElementById("minigame_animation"),
     wasLastKeyRight = true;
 function decrementProgress() {
