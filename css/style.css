@@ -29,6 +29,7 @@ body {
     display:inline-block;
     border-radius:3px 3px 0px 0px;
     transition:all linear 0.15s;
+    outline: 0px;
 }
 
 .tab-links a:hover {
