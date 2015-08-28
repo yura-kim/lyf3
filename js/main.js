@@ -21,14 +21,20 @@ else{
 
 
 
+/* GLOBAL VARIABLES */
+var TIME;
+
+
+
 /* READ COOKIES */
 // First load ?
 if(localStorage.length == 0) {
     localStorage.theme = "light";
     defaultStats();
+    TIME = 0;
+} else {
+    loadStats();
 }
-// Stats
-loadStats();
 // Theme
 if (localStorage.theme == "dark") {
     $('link[href="css/lightstyle.css"]').attr('href','css/darkstyle.css');
@@ -50,6 +56,7 @@ function saveStats() {
     localStorage.appearance = Number(document.getElementById("appearance").innerHTML);
     localStorage.job = document.getElementById("job").innerHTML;
     localStorage.money = Number(document.getElementById("money").innerHTML);
+    localStorage.totaltime = Number(TIME);
 }
 
 function loadStats() {
@@ -59,6 +66,7 @@ function loadStats() {
     document.getElementById("appearance").innerHTML = Number(localStorage.appearance);
     document.getElementById("job").innerHTML = localStorage.job;
     document.getElementById("money").innerHTML = Number(localStorage.money);
+    TIME = Number(localStorage.totaltime);
 }
 
 
@@ -130,10 +138,10 @@ var age = new MyCtor(document.getElementById("age"), 0),
 	job = new MyCtor(document.getElementById("job"), 0),
 	money = new MyCtor(document.getElementById("money"), 0),
 	energy = new MyCtor(document.getElementById("energy"), 0),
-    AGE_INTERVAL = 30000,
+    AGE_INTERVAL = 30000,               // every 30 seconds
 	ENERGY_INREASE_RATE = 1,
-	ENERGY_INCREASE_INTERVAL = 1000,
-    SAVE_INTERVAL = 10000;
+	ENERGY_INCREASE_INTERVAL = 1000,    // every second
+    SAVE_INTERVAL = 10000;              // every 10 seconds
 // Age increment
 setInterval(function () {
     age.change(age.getValue() + 1);
@@ -141,12 +149,25 @@ setInterval(function () {
 // Energy Increment
 setInterval(function () {
     energy.change(energy.getValue() + ENERGY_INREASE_RATE);
+    TIME = Number(TIME) + 1;
 }, ENERGY_INCREASE_INTERVAL);
 // Save Increment
 setInterval(function() {
-    console.log("Auto-save");
     saveStats();
 }, SAVE_INTERVAL);
+
+
+
+/* FUNCTIONS */
+function createAlert(text) {
+   var alert = document.createElement('div');
+   alert.setAttribute("id","alert");
+   alert.setAttribute("class","notification");
+   alert.innerHTML = text;
+   //alert.innerHTML = '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + text;
+   document.lastChild.appendChild(alert);
+   alert.remove();
+}
 
 
 
@@ -154,6 +175,7 @@ setInterval(function() {
 // Save button
 $('button#save').click(function() {
     saveStats();
+    //createAlert("info","Game saved");
 })
 // Reset button
 $('button#reset').click(function() {
@@ -174,3 +196,4 @@ $('button#theme').click(function () {
         localStorage.theme = "dark";
     }
 });
+
