@@ -34,6 +34,7 @@ function updateWeightliftingAnimation() {
 	} else {
 		appearance.change(appearance.getValue()+1);
 		alert("+1 appearance");
+		progress.value = 0;
 	}
 }
 
