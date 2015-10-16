@@ -37,6 +37,7 @@ if(localStorage.length == 0) {
 }
 // Theme
 if (localStorage.theme == "dark") {
+    $('button#theme').prop("innerHTML","Light Theme");
     $('link[href="css/lightstyle.css"]').attr('href','css/darkstyle.css');
 }
 
