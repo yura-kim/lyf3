@@ -1,4 +1,5 @@
 body {
+    min-width: 600px;
 }
 
 
@@ -32,11 +33,12 @@ body {
     outline: 0px;
 }
 
-.tab-links a:hover {
+.tab-links li:hover {
     text-decoration:none;
+    cursor:pointer;
 }
 
-li.active a, li.active a:hover {
+li.active, li.active a:hover {
 	font-weight: bold;
 }
  

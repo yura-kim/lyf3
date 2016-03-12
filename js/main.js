@@ -21,6 +21,24 @@ else{
 
 
 
+/* TABS */
+$(document).ready(function() {
+    $('.tabs .tab-links li').on('click', function(e)  {
+        var currentAttrValue = jQuery(this).attr('id');
+        $('.tabs ' + currentAttrValue).fadeIn(300).siblings().hide();
+        $(this).addClass('active').siblings().removeClass('active');
+        e.preventDefault();
+    });
+    $('#town button').on('click',function(e) {
+        var currentAttrValue = jQuery(this).attr('id');
+        $('.tabs '+currentAttrValue).fadeIn(300).siblings().hide();
+        $('.tabs .tab-links').siblings().removeClass('active');
+        e.preventDefault();
+    })
+});
+
+
+
 /* GLOBAL VARIABLES */
 var TIME;
 
@@ -35,6 +53,7 @@ if(localStorage.length == 0) {
 } else {
     loadStats();
 }
+
 // Theme
 if (localStorage.theme == "dark") {
     $('button#theme').prop("innerHTML","Light Theme");
@@ -69,23 +88,6 @@ function loadStats() {
     document.getElementById("money").innerHTML = Number(localStorage.money);
     TIME = Number(localStorage.totaltime);
 }
-
-
-
-/* TABS */
-$(document).ready(function() {
-    $('.tabs .tab-links a').on('click', function(e)  {
-        var currentAttrValue = jQuery(this).attr('href');
- 
-        // Show/Hide Tabs
-        $('.tabs ' + currentAttrValue).fadeIn(300).siblings().hide();
- 
-        // Change/remove current tab to active
-        $(this).parent('li').addClass('active').siblings().removeClass('active');
- 
-        e.preventDefault();
-    });
-});
 
 
 
@@ -173,19 +175,19 @@ function createAlert(text) {
 
 
 /* BUTTONS */
-// Save button
+$('button#source-code').click(function() {
+    window.open("https://github.com/San-Toki/lyf3","_blank");
+})
 $('button#save').click(function() {
     saveStats();
     //createAlert("info","Game saved");
 })
-// Reset button
 $('button#reset').click(function() {
     if(confirm("Reset all game stats and achievements?")) {
         defaultStats();
         loadStats();
     }
 })
-// Theme button
 $('button#theme').click(function () {
     if (localStorage.theme == "dark") {
         $('link[href="css/darkstyle.css"]').attr('href','css/lightstyle.css');

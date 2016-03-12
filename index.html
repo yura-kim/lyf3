@@ -1,72 +1,101 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8"/>
-		<title>Lyf3</title>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>lyf3</title>
 
-		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/skeleton.css">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/lightstyle.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/skeleton.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/lightstyle.css">
 
-		<script src="js/jquery-2.1.4.min.js"></script>
-	</head>
-	<body>
-		<br>
-		<!-- CONTENT -->
-		<div class="container">
-			<div class="row">
-				<!-- EVENTS -->
-				<div class="three columns">
-					<strong>Events</strong>
-					<br>
-					<br>
-					<div id="events">
-					</div>
-				</div>
-				<!-- MAIN -->
-				<div class="six columns">
-					<div class="tabs">
-					    <!-- Tabs -->
-					    <ul class="tab-links">
-					        <li class="active"><a href="#tab1">Home</a></li>
-					        <li><a href="#tab2">Job</a></li>
-					        <li><a href="#tab3">Gym</a></li>
-					        <li><a href="#tab4">Education</a></li>
-					    </ul>
+        <script src="js/jquery-2.1.4.min.js"></script>
+    </head>
+    <body>
+        <div class="container" style="text-align:center">
+            <br>
+            lyf3
+        </div>
+        <br>
+        <!-- CONTENT -->
+        <div class="container">
+            <div class="row">
+                <!-- EVENTS -->
+                <div class="three columns">
+                    <strong>Events</strong>
+                    <br>
+                    <br>
+                    <div id="events">
+                    </div>
+                </div>
+                <!-- MAIN -->
+                <div class="six columns">
+                    <div class="tabs">
+                        <!-- Tabs -->
+                        <ul class="tab-links">
+                            <li class="active" id="#home">Home</li>
+                            <li id="#town">Town</li>
+                        </ul>
 
-					    <div class="tab-content">
-					        <div id="tab1" class="tab active">
-					            Welcome to Lyf3.
-					        </div>
-					 
-					        <div id="tab2" class="tab">
-					            <strong>Job</strong> - $<span id="job_pay">0</span>/<span id="job_cost">0</span>
-								<br>
-								<button id="work">Work</button>
-								<button id="promotion">Look for a job</button>
-					        </div>
-					 
-					        <div id="tab3" class="tab">
-					            <div>
-								<span>Alternate left and right keys to lift the weight!</span>
-								<pre id="minigame_animation"></pre>
-								</div>
-								<br>
-								<progress id="minigame_progress_bar" value="0" max="50"></progress>
-					        </div>
-					 
-					        <div id="tab4" class="tab">
-					            <span>2 COOL 4 SCHOOL</span>
-					        </div>
-					    </div>
-					</div>
-				</div>
-				<!-- STATS -->
-				<div class="three columns">
-					<strong>Stats</strong>
-					<br>
-					<br>
+                        <div class="tab-content">
+                            <div id="home" class="tab active">
+                                Welcome to lyf3.
+                                <br>
+                                <br>
+                                <button id="sleep">Go to sleep</button>
+                                <br>
+                                <button id="mom">Complain to mom</button>
+                            </div>
+
+                            <div id="town" class="tab">
+                                The same old town you grew up in.
+                                <br>
+                                <br>
+                                <button id="#gym">Gym</button>
+                                <br>
+                                <button id="#restaurant">McDangles</button>
+                                <br>
+                                <button id="#school">City College</button>
+                            </div>
+
+                            <div id="gym" class="tab">
+                                <strong>Gym</strong>
+                                <br>
+                                Not a soul to be seen, but the place stinks to high heavens.
+                                <br>
+                                <pre id="minigame_animation"></pre>
+                                <progress id="minigame_progress_bar" value="0" max="50"></progress>
+                                <br>
+                                <button><</button><button>></button>
+                            </div>
+
+                            <div id="restaurant" class="tab">
+                                <strong>McDangles</strong>
+                                <br>
+                                There's something special about this place. This is where you and your friends hung out before they all left for the city.
+                                <br><br>
+                                <strong>Position</strong> - $<span id="job_pay">0</span>/<span id="job_cost">0</span>
+                                <br>
+                                <button id="promotion">Look for a job</button>
+                                <br>
+                                <button id="work">Work</button>
+                                <br>
+                                <button id="job-quit">Quit</button>
+                            </div>
+
+                            <div id="school" class="tab">
+                                <strong>City College of Centralia</strong>
+                                <br><br>
+                                2 COOL 4 SCHOOL
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- STATS -->
+                <div class="three columns">
+                    <strong>Stats</strong>
+                    <br>
+                    <br>
                     <div class="stats">
                         <strong>Age:</strong> <span id="age"></span><br>
                         <strong>Energy:</strong> <span id="energy"></span><br>
@@ -76,18 +105,18 @@
                         <strong>Job:</strong> <span id="job"></span><br>
                         <strong>Money:</strong> $<span id="money"></span><br>
                     </div>
-				</div>
-			</div>
-		</div>
-		<br>
-		<!-- FOOTER -->
-		<div class="footer" style="position: fixed; bottom: 0px; width: 100%">
-			<a href="https://github.com/San-Toki/Lyf3" target="_blank"><button>GitHub</button></a>
-			<button id="theme">Dark Theme</button>
-			<button id="reset">Reset</button>
-			<button id="save">Save</button>
-		</div>
-	</body>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- FOOTER -->
+        <div class="footer" style="position: fixed; bottom: 0px; width: 100%">
+            <button id="source-code">Source Code</button>
+            <button id="theme">Dark Theme</button>
+            <button id="reset">Reset</button>
+            <button id="save">Save</button>
+        </div>
+    </body>
 </html>
 
 <script src="js/main.js"></script>
