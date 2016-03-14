@@ -1,6 +1,6 @@
 
 var progress = document.getElementById("minigame_progress_bar"),
-    appearance = new MyCtor(document.getElementById("appearance"), 0),
+    appearance = document.getElementById("appearance"),
     animation_text = document.getElementById("minigame_animation"),
     wasLastKeyRight = true;
 function decrementProgress() {
@@ -32,9 +32,11 @@ function updateWeightliftingAnimation() {
 	} else if (progress.value < 49) {
 		animation_text.innerHTML = weightlifting_anim[5];
 	} else {
-		appearance.change(appearance.getValue()+1);
+		appearance.innerHTML = Number(appearance.innerHTML) + 1;
+		document.getElementById("energy").innerHTML = Number(document.getElementById("energy").innerHTML) - 10;
 		alert("+1 appearance");
 		progress.value = 0;
+		document.getElementById("#gym").click();
 	}
 }
 

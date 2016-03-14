@@ -31,6 +31,9 @@ $(document).ready(function() {
     });
     $('#town button').on('click',function(e) {
         var currentAttrValue = jQuery(this).attr('id');
+        if ((currentAttrValue == "#gym") && (Number(document.getElementById("energy").innerHTML) < 10)) {
+            currentAttrValue = "#gym-no";
+        }
         $('.tabs '+currentAttrValue).fadeIn(300).siblings().hide();
         $('.tabs .tab-links').siblings().removeClass('active');
         e.preventDefault();
@@ -41,6 +44,9 @@ $(document).ready(function() {
 
 /* GLOBAL VARIABLES */
 var TIME;
+/* EVENTS LOGGER */
+var events = document.getElementById("events"),
+    EVENT_MAX = 1000;
 
 
 
@@ -49,10 +55,12 @@ var TIME;
 if(localStorage.length == 0) {
     localStorage.theme = "light";
     defaultStats();
-    TIME = 0;
+    loadStats();
 } else {
     loadStats();
 }
+
+
 
 // Theme
 if (localStorage.theme == "dark") {
@@ -61,16 +69,17 @@ if (localStorage.theme == "dark") {
 }
 
 function defaultStats() {
-    localStorage.age = Number(15);
-    localStorage.energy = Number(0);
+    localStorage.days = Number(0);
+    localStorage.energy = Number(240);
     localStorage.intelligence = Number(0);
     localStorage.appearance = Number(0);
     localStorage.job = "None";
     localStorage.money = Number(0);
+    events.innerHTML = "";
 }
 
 function saveStats() {
-    localStorage.age = Number(document.getElementById("age").innerHTML);
+    localStorage.days = Number(document.getElementById("days").innerHTML);
     localStorage.energy = Number(document.getElementById("energy").innerHTML);
     localStorage.intelligence = Number(document.getElementById("intelligence").innerHTML);
     localStorage.appearance = Number(document.getElementById("appearance").innerHTML);
@@ -80,20 +89,26 @@ function saveStats() {
 }
 
 function loadStats() {
-    document.getElementById("age").innerHTML = Number(localStorage.age);
+    document.getElementById("days").innerHTML = Number(localStorage.days);
     document.getElementById("energy").innerHTML = Number(localStorage.energy);
     document.getElementById("intelligence").innerHTML = Number(localStorage.intelligence);
     document.getElementById("appearance").innerHTML = Number(localStorage.appearance);
     document.getElementById("job").innerHTML = localStorage.job;
     document.getElementById("money").innerHTML = Number(localStorage.money);
     TIME = Number(localStorage.totaltime);
+    days = document.getElementById("days").innerHTML,
+    job = document.getElementById("job").innerHTML,
+    money = document.getElementById("money").innerHTML,
+    energy = document.getElementById("energy").innerHTML;
 }
 
+// Save every 10 seconds
+setInterval(function() {
+    saveStats();
+}, 10000);
 
 
-/* EVENTS LOGGER */
-var events = document.getElementById("events"),
-	EVENT_MAX = 1000;
+
 // log events
 function logEvent(message) {
 	var newEvent = document.createElement("div");
@@ -104,61 +119,6 @@ function logEvent(message) {
 		events.removeChild(events.lastChild);
 	}
 }
-
-
-
-
-
-/* MYCTOR */
-function MyCtor(element, data) {
-    this.data = data;
-    this.element = element;
-    element.value = data;
-    element.addEventListener("change", this, false);
-}
-
-MyCtor.prototype.handleEvent = function (event) {
-    switch (event.type) {
-        case "change":
-            this.change(this.element.value);
-    }
-};
-
-MyCtor.prototype.change = function (value) {
-    this.data = value;
-    this.element.innerHTML = value;
-};
-MyCtor.prototype.getValue = function () {
-    return parseInt(this.element.innerHTML, 10);
-};
-
-
-
-
-
-/* STATS */
-var age = new MyCtor(document.getElementById("age"), 0),
-	job = new MyCtor(document.getElementById("job"), 0),
-	money = new MyCtor(document.getElementById("money"), 0),
-	energy = new MyCtor(document.getElementById("energy"), 0),
-    AGE_INTERVAL = 30000,               // every 30 seconds
-	ENERGY_INREASE_RATE = 1,
-	ENERGY_INCREASE_INTERVAL = 1000,    // every second
-    SAVE_INTERVAL = 10000;              // every 10 seconds
-// Age increment
-setInterval(function () {
-    age.change(age.getValue() + 1);
-}, AGE_INTERVAL);
-// Energy Increment
-setInterval(function () {
-    energy.change(energy.getValue() + ENERGY_INREASE_RATE);
-    TIME = Number(TIME) + 1;
-}, ENERGY_INCREASE_INTERVAL);
-// Save Increment
-setInterval(function() {
-    saveStats();
-}, SAVE_INTERVAL);
-
 
 
 /* FUNCTIONS */
@@ -174,6 +134,17 @@ function createAlert(text) {
 
 
 
+/* HOME */
+$('button#sleep').click(function() {
+    days = Number(days) + 1;
+    document.getElementById("days").innerHTML = Number(days);
+    energy = 240;
+    document.getElementById("energy").innerHTML = Number(energy);
+    logEvent("You went to bed.");
+});
+
+
+
 /* BUTTONS */
 $('button#source-code').click(function() {
     window.open("https://github.com/San-Toki/lyf3","_blank");
@@ -183,7 +154,7 @@ $('button#save').click(function() {
     //createAlert("info","Game saved");
 })
 $('button#reset').click(function() {
-    if(confirm("Reset all game stats and achievements?")) {
+    if(confirm("Are you sure you want to reset all game stats and achievements?")) {
         defaultStats();
         loadStats();
     }
@@ -199,4 +170,3 @@ $('button#theme').click(function () {
         localStorage.theme = "dark";
     }
 });
-
