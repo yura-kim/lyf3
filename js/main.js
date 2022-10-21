@@ -44,6 +44,12 @@ $(document).ready(function() {
 
 /* GLOBAL VARIABLES */
 var TIME;
+var COMPLAINTS = [
+    "the weird smell coming from the hallway.",
+    "the new scratch on the side of your car.",
+    "the slow internet speed.",
+    "not having cable TV.",
+];
 /* EVENTS LOGGER */
 var events = document.getElementById("events"),
     EVENT_MAX = 1000;
@@ -125,6 +131,7 @@ setInterval(function() {
 // log events
 function logEvent(message) {
 	var newEvent = document.createElement("div");
+    newEvent.style.paddingBottom = "20px";
 	newEvent.innerHTML = message;
 	events.insertBefore(newEvent, events.childNodes[0]);
 	// If we have too many children, delete the last one
@@ -154,6 +161,10 @@ $('button#sleep').click(function() {
     energy = 240;
     document.getElementById("energy").innerHTML = Number(energy);
     logEvent("You went to bed.");
+});
+
+$('button#mom').click(function() {
+    logEvent("You complain to mom about " + COMPLAINTS[Math.floor(Math.random() * COMPLAINTS.length)]);
 });
 
 
