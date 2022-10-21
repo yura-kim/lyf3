@@ -53,7 +53,6 @@ var events = document.getElementById("events"),
 /* READ COOKIES */
 // First load ?
 if(localStorage.length == 0) {
-    localStorage.theme = "light";
     defaultStats();
     loadStats();
 } else {
@@ -68,38 +67,52 @@ if (localStorage.theme == "dark") {
     $('link[href="css/lightstyle.css"]').attr('href','css/darkstyle.css');
 }
 
+// Stats
 function defaultStats() {
-    localStorage.days = Number(0);
-    localStorage.energy = Number(240);
-    localStorage.intelligence = Number(0);
-    localStorage.appearance = Number(0);
-    localStorage.job = "None";
-    localStorage.money = Number(0);
+    var gameState = {
+        theme: "light",
+        player: {
+            intelligence: 0,
+            appearance: 0,
+            job: "None",
+            money: 0,
+        },
+        day: 0,
+        energy: 240,
+        totalTime: 0,
+    };
+    localStorage.setItem('gameState', JSON.stringify(gameState));
     events.innerHTML = "";
 }
 
 function saveStats() {
-    localStorage.days = Number(document.getElementById("days").innerHTML);
-    localStorage.energy = Number(document.getElementById("energy").innerHTML);
-    localStorage.intelligence = Number(document.getElementById("intelligence").innerHTML);
-    localStorage.appearance = Number(document.getElementById("appearance").innerHTML);
-    localStorage.job = document.getElementById("job").innerHTML;
-    localStorage.money = Number(document.getElementById("money").innerHTML);
-    localStorage.totaltime = Number(TIME);
+    var gameState = {
+        player: {
+            intelligence: $("#intelligence").html(),
+            appearance: $("#appearance").html(),
+            job: $("#job").html(),
+            money: $("#money").html(),
+        },
+        day: $("#days").html(),
+        energy: $("#energy").html(),
+        totalTime: TIME,
+    };
+    localStorage.setItem('gameState', JSON.stringify(gameState));
 }
 
 function loadStats() {
-    document.getElementById("days").innerHTML = Number(localStorage.days);
-    document.getElementById("energy").innerHTML = Number(localStorage.energy);
-    document.getElementById("intelligence").innerHTML = Number(localStorage.intelligence);
-    document.getElementById("appearance").innerHTML = Number(localStorage.appearance);
-    document.getElementById("job").innerHTML = localStorage.job;
-    document.getElementById("money").innerHTML = Number(localStorage.money);
-    TIME = Number(localStorage.totaltime);
-    days = document.getElementById("days").innerHTML,
-    job = document.getElementById("job").innerHTML,
-    money = document.getElementById("money").innerHTML,
-    energy = document.getElementById("energy").innerHTML;
+    var gameState = JSON.parse(localStorage.getItem('gameState'));
+    $("#days").html(gameState.day);
+    $("#energy").html(gameState.energy);
+    $("#intelligence").html(gameState.player.intelligence);
+    $("#appearance").html(gameState.player.appearance);
+    $("#job").html(gameState.player.job);
+    $("#money").html(gameState.player.money);
+    TIME = gameState.totalTime;
+    days = $("#days").innerHTML,
+    job = $("#job").innerHTML,
+    money = $("#money").innerHTML,
+    energy = $("#energy").innerHTML;
 }
 
 // Save every 10 seconds
